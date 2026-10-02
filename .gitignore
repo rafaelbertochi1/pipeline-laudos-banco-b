@@ -1,0 +1,39 @@
+# Sessão salva do robô de download (Plataforma) - contém cookies de login,
+# NUNCA deve ir pro GitHub.
+**/sessao_plataforma.json
+# Pasta antiga de perfil do Chrome (versão anterior do robô) - mesma razão.
+**/chrome_profile_plataforma/
+
+# Laudos baixados (PDFs) contêm dados confidenciais de clientes (CPF,
+# nome, endereço, valores) e NUNCA devem ir pro GitHub.
+**/data/laudos/*.pdf
+# zip de laudos (ex.: Laudos_Zipados.zip) - mesmos PDFs, mesma regra
+**/data/laudos/*.zip
+# lista de laudos checados sem laudo publicado (cache do downloader)
+**/data/laudos/*.json
+**/data/laudos/*.json.tmp
+# trava da etapa de coordenadas (uma execução por vez)
+**/data/laudos/*.lock
+
+# Fotos de fachada extraídas dos laudos - mostram o imóvel do cliente,
+# mesma confidencialidade dos PDFs. Também NUNCA vão pro GitHub.
+**/data/imagens/
+
+# Logs de execução do robô (guardam e-mail e datas usadas), locais.
+**/logs/
+
+# Backups do banco (pg_dump) - contêm todos os dados extraídos dos
+# laudos, mesma confidencialidade dos PDFs. NUNCA vão pro GitHub.
+*.dump
+*.sql.gz
+*.backup
+
+# Configuração local com credenciais do banco (se você optar por usar
+# um .env em vez de exportar as variáveis direto no terminal).
+.env
+
+# Arquivos de cache do Python
+__pycache__/
+*.pyc
+.venv/
+venv/

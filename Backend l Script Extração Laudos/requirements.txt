@@ -1,0 +1,4 @@
+playwright
+pdfplumber
+psycopg2-binary
+pymupdf

@@ -1,5 +1,7 @@
 # pipeline-laudos-banco-b
 
+[![Testes](https://github.com/rafaelbertochi1/pipeline-laudos-banco-b/actions/workflows/testes.yml/badge.svg)](https://github.com/rafaelbertochi1/pipeline-laudos-banco-b/actions/workflows/testes.yml)
+
 > **Sobre este repositório.** Versão de portfólio de um projeto real, desenvolvido em
 > ambiente corporativo em 2026. Os nomes da empresa, dos sistemas e dos bancos, as URLs
 > e os dados de exemplo foram trocados por nomes genéricos ("Central de Gestão",
@@ -214,6 +216,18 @@ python conferir_extracao.py
 ```
 
 Ela sorteia 500 laudos e compara o banco com as tabelas de cálculo do próprio PDF, que repetem os números das amostras e do imóvel avaliado. Cada comparação sai como *bate*, *laudo inconsistente* (a extração leu certo; o laudo é que se contradiz) ou *erro de extração*. Pra conferir mais laudos: `$env:CONFERIR_QTD="2000"` (ou `"todos"`, que leva perto de uma hora).
+
+## Testes
+
+Os testes automatizados cobrem as partes que decidem se um dado entra no banco: a conversão dos números, datas, coordenadas e endereços impressos no PDF (`banco_b_extractor.py`) e a validação do lote antes de gravar (`checagens.py` e `validar_lote`). Cada caso vem de um formato que já apareceu de verdade nos laudos — por exemplo, a área `"61.800"`, que antes virava 61.800 m².
+
+```powershell
+cd "Backend l Script Extração Laudos"
+pip install -r requirements.txt pytest
+pytest
+```
+
+Não precisam de banco, internet nem PDFs: rodam em menos de um segundo. O GitHub Actions roda a mesma suíte a cada push (selo no topo deste README).
 
 ## O que nunca commitar
 
